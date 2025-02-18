@@ -1,31 +1,103 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>Rock Paper Scissors</title>
-    <link rel="stylesheet" type="text/css" href="styles/styles.css">
-  </head>
-  <body>
-    <p class="title">Rock Paper Scissors</p>
-    <button onclick="
-      playGame('rock');
-    " class="move-button"><img src="images/rock-emoji.png" class="move-icon"></button>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rock Paper Scissors</title>
+  <link rel="stylesheet" type="text/css" href="styles/styles.css">
+  <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      text-align: center;
+      font-family: Arial, sans-serif;
+      background-color: rgb(25, 25, 25);
+      color: white;
+    }
 
-    <button onclick="
-      playGame('paper');
-    "
-    class="move-button">
-    <img src="images/paper-emoji.png " class="move-icon"></button>
+    .title {
+      font-size: 30px;
+      font-weight: bold;
+    }
 
-    <button onclick="
-      playGame('scissors');
-    "
-    class="move-button">
-    <img src="images/scissors-emoji.png" class="move-icon"></button>
+    .game-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
 
+    .buttons {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .move-button {
+      background-color: transparent;
+      border: 3px solid white;
+      width: 100px;
+      height: 100px;
+      border-radius: 50px;
+      margin-right: 10px;
+      cursor: pointer;
+    }
+
+    .move-icon {
+      height: 50px;
+    }
+
+    .result {
+      font-size: 25px;
+      font-weight: bold;
+      margin-top: 50px;
+    }
+
+    .score {
+      margin-top: 60px;
+    }
+
+    .reset-score-button {
+      background-color: white;
+      border: none;
+      font-size: 15px;
+      padding: 8px 15px;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+
+    @media (max-width: 600px) {
+      .move-button {
+        width: 80px;
+        height: 80px;
+        border-radius: 40px;
+      }
+      .move-icon {
+        height: 40px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <p class="title">Rock Paper Scissors</p>
+  <div class="game-container">
+    <div class="buttons">
+      <button onclick="playGame('rock');" class="move-button">
+        <img src="images/rock-emoji.png" class="move-icon">
+      </button>
+      <button onclick="playGame('paper');" class="move-button">
+        <img src="images/paper-emoji.png" class="move-icon">
+      </button>
+      <button onclick="playGame('scissors');" class="move-button">
+        <img src="images/scissors-emoji.png" class="move-icon">
+      </button>
+    </div>
     <p class="js-result result"></p>
     <p class="js-moves"></p>
     <p class="js-score score"></p>
-
     <button onclick="
       score.wins = 0;
       score.losses = 0;
@@ -33,30 +105,7 @@
       localStorage.removeItem('score');
       updateScoreElement();
     " class="reset-score-button">Reset Score</button>
-
-    <script src="scripts/index.js"></script>
-    <script type="module">
-      // Import the functions you need from the SDKs you need
-      import { initializeApp } from "https://www.gstatic.com/firebasejs/11.2.0/firebase-app.js";
-      import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.2.0/firebase-analytics.js";
-      // TODO: Add SDKs for Firebase products that you want to use
-      // https://firebase.google.com/docs/web/setup#available-libraries
-    
-      // Your web app's Firebase configuration
-      // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-      const firebaseConfig = {
-        apiKey: "AIzaSyDfU3Bmo5oWT0bmCiFL2if09_V4caYtJII",
-        authDomain: "rock-paper-scissors-by-p-2a175.firebaseapp.com",
-        projectId: "rock-paper-scissors-by-p-2a175",
-        storageBucket: "rock-paper-scissors-by-p-2a175.firebasestorage.app",
-        messagingSenderId: "646759843917",
-        appId: "1:646759843917:web:9844b3804a72d0fa467404",
-        measurementId: "G-6S75DWTH7Q"
-      };
-    
-      // Initialize Firebase
-      const app = initializeApp(firebaseConfig);
-      const analytics = getAnalytics(app);
-    </script>
-  </body>
+  </div>
+  <script src="scripts/index.js"></script>
+</body>
 </html>
